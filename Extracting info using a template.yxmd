@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.1">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="PDFInput">
+        <Position x="54" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <PDFDirectory isWorkflowDependency="True">.</PDFDirectory>
+          <Field />
+          <ModeSelect>input_path</ModeSelect>
+          <FileOption>all</FileOption>
+          <FileType />
+          <OutputFieldName>image</OutputFieldName>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="Python" EngineDllEntryPoint="PDFInput\pdf_input_engine.py" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="234" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>&gt;</Operator>
+            <Field>page</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2022-05-16 10:37:34</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>1</Operand>
+              <StartDate>2022-05-16 10:37:34</StartDate>
+              <EndDate>2022-05-16 10:37:34</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[page] &gt; 1</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="ImageTemplate">
+        <Position x="234" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FilePath isWorkflowDependency="True">C:\Users\cgoodman003\Documents\Alteryx Inspire Denver 2022\PDFs\Deal summary sheet\Property Summary Sheet.pdf</FilePath>
+          <PageNumber>2</PageNumber>
+          <Bounds>[{"fname":"Store Name","ftype":"string","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.07792207792207792,"y":0.146218487394958,"w":0.8025974025974026,"h":0.07226890756302522},{"fname":"Store ID","ftype":"string","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.2805194805194805,"y":0.3310924369747899,"w":0.05844155844155844,"h":0.020168067226890758},{"fname":"Landlord","ftype":"string","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.2792207792207792,"y":0.3546218487394958,"w":0.15324675324675324,"h":0.01680672268907563},{"fname":"Lease Expiry Date","ftype":"string","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.2779220779220779,"y":0.3899159663865546,"w":0.15454545454545454,"h":0.020168067226890758},{"fname":"Year of Opening","ftype":"string","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.2766233766233766,"y":0.4117647058823529,"w":0.15584415584415584,"h":0.01680672268907563},{"fname":"Nearest Competitor","ftype":"string","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.2831168831168831,"y":0.7680672268907563,"w":0.09350649350649351,"h":0.013445378151260505},{"fname":"Distance of Nearest Competitor","ftype":"string","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.2818181818181818,"y":0.7865546218487395,"w":0.12727272727272726,"h":0.018487394957983194},{"fname":"Store Front","ftype":"img","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.4909090909090909,"y":0.30756302521008405,"w":0.38181818181818183,"h":0.21512605042016808},{"fname":"Market Information","ftype":"table","page":2,"src":"https://fake.image.url.com/for/annotation","x":0.09090909090909091,"y":0.5983193277310924,"w":0.37662337662337664,"h":0.13109243697478992}]</Bounds>
+          <Mode>manual</Mode>
+          <BlobField>image</BlobField>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="Python" EngineDllEntryPoint="ImageTemplate\image_template_engine.py" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="ImageToText">
+        <Position x="426" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FieldSelect>image</FieldSelect>
+          <LanguageSelect>EN</LanguageSelect>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="Python" EngineDllEntryPoint="ImageToText\image_to_text_engine.py" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="330" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="2" field="page" size="4" type="Int32" />
+            <FormulaField expression="[path]+tostring([RecordID])" field="path" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[page = 2
+path = [path]+tostring([RecordID])
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+        <Position x="138" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FieldName>RecordID</FieldName>
+          <StartValue>1</StartValue>
+          <FieldType>Int32</FieldType>
+          <FieldSize>6</FieldSize>
+          <Position>0</Position>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="522" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\cgoodman003\AppData\Local\Temp\Engine_20692_abb4f3267d8d4b9dae574d4b7af7e3f9_\Engine_24276_e1453c97ce3146bcb746e397d67536b4_.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="True" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="templateInput" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="6" Connection="dataInput" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Extracting info using a template</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="bd65a2c7-93f6-4336-8e3a-3dfd9a98c83f" />
+      <Telemetry>
+        <PreviousWorkflowId value="a6cec02f-1cfa-47c9-966d-a91d37c8d003" />
+        <OriginWorkflowId value="a6cec02f-1cfa-47c9-966d-a91d37c8d003" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
